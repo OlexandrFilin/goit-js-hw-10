@@ -5,7 +5,7 @@ const api_key =
 axios.defaults.headers.common['x-api-key'] = api_key;
 
 function fetchBreeds() {
-  const url = `https://api.thecatapi.com/v1/breeds1?limit=20`;
+  const url = `https://api.thecatapi.com/v1/breeds?limit=20`;
   viewTag(elements.loader);
 
   return axios
