@@ -36,8 +36,8 @@ fetchBreeds()
   });
 
 function inputCat(id) {
-  url = `https://api.thecatapi.com/v1/images/search?breed_ids=${id}`;
-  console.log('Request on url ', url);
+  const url = `https://api.thecatapi.com/v1/images/search?breed_ids=${id}`;
+  // console.log('Request on url ', url);
   viewTag(elements.loader);
   axios
     .get(url)
