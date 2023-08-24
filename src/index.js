@@ -32,15 +32,18 @@ fetchBreeds()
   })
   .catch(error => {
     viewTag(elements.error);
+    hiddenTag(elements.loader);
   });
 
 function inputCat(id) {
+  console.log(url);
   url = `https://api.thecatapi.com/v1/images/search?breed_ids=${id}`;
   viewTag(elements.loader);
   axios
     .get(url)
-    .then(catAr => {
-      const cat = catAr.data[0];
+    .then(catResp => {
+      console.log(catResp);
+      const cat = catResp.data[0];
       const breed = cat.breeds[0];
       const markup = `<img src="${cat.url}" alt="${cat.url}" width = 300  />
             <div class="cat-discript">
