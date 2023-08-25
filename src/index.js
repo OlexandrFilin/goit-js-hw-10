@@ -40,6 +40,7 @@ function inputCat(id) {
   const url = `https://api.thecatapi.com/v1/images/search?breed_ids=${id}`;
   // console.log('Request on url ', url);
   viewTag(elements.loader);
+  hiddenTag(elements.catInfo);
   axios
     .get(url)
     .then(catResp => {
@@ -51,8 +52,11 @@ function inputCat(id) {
              <p>${breed.description}</p>
              <p><b>Temperament: </b>${breed.temperament}</p> </div>`;
       elements.catInfo.innerHTML = markup;
+      // elements.catInfo.innerHTML = '';
+      // elements.catInfo.insertAdjacentHTML('beforeEnd', markup);
       hiddenTag(elements.loader);
       hiddenTag(elements.error);
+      viewTag(elements.catInfo);
     })
     .catch(error => {
       hiddenTag(elements.loader);
