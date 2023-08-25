@@ -1,4 +1,4 @@
-import { fetchBreeds, axios, viewTag, hiddenTag } from './cat-api';
+import { axios, fetchBreeds, showError, viewTag, hiddenTag } from './cat-api';
 import SlimSelect from 'slim-select';
 
 const elements = {
@@ -33,6 +33,7 @@ fetchBreeds()
   .catch(error => {
     viewTag(elements.error);
     hiddenTag(elements.loader);
+    showError(error.message);
   });
 
 function inputCat(id) {
@@ -51,9 +52,12 @@ function inputCat(id) {
              <p><b>Temperament: </b>${breed.temperament}</p> </div>`;
       elements.catInfo.innerHTML = markup;
       hiddenTag(elements.loader);
+      hiddenTag(elements.error);
     })
     .catch(error => {
+      hiddenTag(elements.loader);
       viewTag(elements.error);
+      showError(error.message);
     });
 }
 
